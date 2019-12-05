@@ -41,20 +41,17 @@ def computer(array):
             for mode, val in zip([c,b,a], array[pos + 1 : pos + 1 + count])
         ]
 
-        print('parameters', parameters, 'opcode', array[pos], 'pos', pos)
+        # print('parameters', parameters, 'opcode', array[pos], 'pos', pos)
         # print("abcde", a, b, c, de)
 
         result = reduce(oper, parameters[0 : -1]) if len(parameters) > 1 else None
         if result or result == 0:
-            print('result', result, 'store', array[array[pos + 3]])
             array[array[pos + 3]] = result
         if de == 3:
             arg = array[pos + 1]
-            print('INPUT ARG', arg)
             array[arg] = the_input
         if de == 4:
             arg = array[pos + 1] if c != 1 else pos + 1
-            print('output', array[arg], 'pos', pos)
         pos += count + 1
     else:
         return array[ret_pos], array
