@@ -44,14 +44,15 @@ def computer(array):
             for mode, val in zip([c,b,a], array[pos + 1 : pos + 1 + count])
         ]
         # print('ARRAY 225 VAL', array[225])
-        print('parameters', parameters)
+        print('parameters', parameters, 'opcode', array[pos], 'pos', pos)
         # print('vals', array[pos + 1 : pos + 1 + count])
         # print("abcde", a, b, c, de)
 
         result = reduce(oper, parameters[0 : -1]) if len(parameters) > 1 else None
-        if result:
+        if result or result == 0:
             # print('RESULT')
             # print(result, pos, count)
+            print('result', result, 'store', array[array[pos + 3]])
             array[array[pos + 3]] = result
         if de == 3:
             # print('input exing')
